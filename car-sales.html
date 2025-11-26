@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SugiBlog Cars - Find Your Dream Car</title>
+    <meta name="description"
+        content="Discover the best car deals at SugiBlog Cars. Browse new and used cars, compare prices, read reviews, and find your perfect vehicle today.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="car-styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <img src="sugiblog_car_logo.webp" alt="SugiBlog Cars Logo" class="logo-img">
+                    <span class="logo-text">SugiBlog<span class="logo-accent">Cars</span></span>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#new-cars" class="nav-link">New Cars</a></li>
+                    <li><a href="#used-cars" class="nav-link">Used Cars</a></li>
+                    <li><a href="#compare" class="nav-link">Compare</a></li>
+                    <li><a href="#reviews" class="nav-link">Reviews</a></li>
+                    <li><a href="#dealers" class="nav-link">Dealers</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button class="btn-secondary" id="signInBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Sign In
+                    </button>
+                    <button class="btn-primary" id="sellCarBtn">Sell Car</button>
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="gradient-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Find Your <span class="gradient-text">Dream Car</span></h1>
+                <p class="hero-subtitle">Explore thousands of new and used cars with the best prices and deals</p>
+
+                <!-- Search Box -->
+                <div class="search-box">
+                    <div class="search-tabs">
+                        <button class="search-tab active" data-tab="new">New Cars</button>
+                        <button class="search-tab" data-tab="used">Used Cars</button>
+                    </div>
+
+                    <div class="search-form">
+                        <div class="search-field">
+                            <label>Brand</label>
+                            <select id="brandSelect">
+                                <option value="">Select Brand</option>
+                                <option value="maruti">Maruti Suzuki</option>
+                                <option value="hyundai">Hyundai</option>
+                                <option value="tata">Tata</option>
+                                <option value="mahindra">Mahindra</option>
+                                <option value="kia">Kia</option>
+                                <option value="honda">Honda</option>
+                                <option value="toyota">Toyota</option>
+                                <option value="bmw">BMW</option>
+                                <option value="mercedes">Mercedes-Benz</option>
+                                <option value="audi">Audi</option>
+                            </select>
+                        </div>
+
+                        <div class="search-field">
+                            <label>Budget</label>
+                            <select id="budgetSelect">
+                                <option value="">Select Budget</option>
+                                <option value="0-5">Under ₹5 Lakh</option>
+                                <option value="5-10">₹5-10 Lakh</option>
+                                <option value="10-15">₹10-15 Lakh</option>
+                                <option value="15-20">₹15-20 Lakh</option>
+                                <option value="20-30">₹20-30 Lakh</option>
+                                <option value="30+">Above ₹30 Lakh</option>
+                            </select>
+                        </div>
+
+                        <div class="search-field">
+                            <label>Body Type</label>
+                            <select id="bodyTypeSelect">
+                                <option value="">All Types</option>
+                                <option value="hatchback">Hatchback</option>
+                                <option value="sedan">Sedan</option>
+                                <option value="suv">SUV</option>
+                                <option value="muv">MUV</option>
+                                <option value="luxury">Luxury</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-search">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            Search
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3 class="stat-number">5000+</h3>
+                        <p class="stat-label">Cars Available</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="stat-number">500+</h3>
+                        <p class="stat-label">Verified Dealers</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="stat-number">10k+</h3>
+                        <p class="stat-label">Happy Customers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Cars Section -->
+    <section class="section" id="new-cars">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured New Cars</h2>
+                <p class="section-subtitle">Popular choices in 2024</p>
+            </div>
+
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="hatchback">Hatchback</button>
+                <button class="filter-btn" data-filter="sedan">Sedan</button>
+                <button class="filter-btn" data-filter="suv">SUV</button>
+                <button class="filter-btn" data-filter="luxury">Luxury</button>
+            </div>
+
+            <div class="cars-grid" id="carsGrid">
+                <!-- Cars will be dynamically loaded -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose SugiBlog Cars?</h2>
+                <p class="section-subtitle">Your trusted car buying partner</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Verified Dealers</h3>
+                    <p>All our dealers are verified and trusted for your peace of mind</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Best Prices</h3>
+                    <p>Compare prices and get the best deals on your dream car</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                    </div>
+                    <h3>Expert Reviews</h3>
+                    <p>Read detailed reviews from experts and real owners</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our team is always ready to help you find the perfect car</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated with Latest Car Deals</h2>
+                <p>Subscribe to our newsletter and never miss out on great offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <img src="sugiblog_car_logo.webp" alt="SugiBlog Cars Logo" class="logo-img">
+                        <span class="logo-text">SugiBlog<span class="logo-accent">Cars</span></span>
+                    </div>
+                    <p>Your trusted partner in finding the perfect car. We make car buying simple and enjoyable.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><svg width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg></a>
+                        <a href="#" aria-label="Twitter"><svg width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                </path>
+                            </svg></a>
+                        <a href="#" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="#000"
+                                    stroke-width="1.5"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#000" stroke-width="2"></line>
+                            </svg></a>
+                        <a href="#" aria-label="YouTube"><svg width="24" height="24" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="none" stroke="#000"
+                                    stroke-width="1.5"></polygon>
+                            </svg></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#new-cars">New Cars</a></li>
+                        <li><a href="#used-cars">Used Cars</a></li>
+                        <li><a href="#compare">Compare Cars</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Car Finance</a></li>
+                        <li><a href="#">Insurance</a></li>
+                        <li><a href="#">Car Valuation</a></li>
+                        <li><a href="#">Sell Your Car</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 SugiBlog Cars. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sign In Modal -->
+    <div class="modal" id="signInModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h2 id="authTitle">Welcome Back!</h2>
+                    <p id="authSubtitle">Sign in to access your account</p>
+                </div>
+
+                <!-- Sign In Form -->
+                <form class="auth-form" id="signInForm">
+                    <div class="form-group">
+                        <label for="signInEmail">Email Address</label>
+                        <input type="email" id="signInEmail" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signInPassword">Password</label>
+                        <input type="password" id="signInPassword" placeholder="Enter your password" required>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="link-primary">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-block">Sign In</button>
+
+                    Facebook
+                    </button>
+            </div>
+            </form>
+
+            <!-- Sign Up Form (Hidden by default) -->
+            <form class="auth-form hidden" id="signUpForm">
+                <div class="form-group">
+                    <label for="signUpName">Full Name</label>
+                    <input type="text" id="signUpName" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signUpEmail">Email Address</label>
+                    <input type="email" id="signUpEmail" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signUpPhone">Phone Number</label>
+                    <input type="tel" id="signUpPhone" placeholder="+91 98765 43210" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signUpPassword">Password</label>
+                    <input type="password" id="signUpPassword" placeholder="Create a password" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" required>
+                        <span>I agree to the Terms of Service and Privacy Policy</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary btn-block">Create Account</button>
+            </form>
+
+            <div class="auth-footer">
+                <p id="authSwitchText">Don't have an account? <a href="#" id="authSwitchLink" class="link-primary">Sign
+                        up</a></p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="car-script.js"></script>
+</body>
+
+</html>
