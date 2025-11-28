@@ -3,10 +3,12 @@
     --primary-hover: #4f46e5;
     --secondary-color: #ec4899;
     --bg-color: #0f172a;
+    /* Fallback */
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
     --card-bg: #1e293b;
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
-    --nav-bg: rgba(15, 23, 42, 0.9);
+    --nav-bg: rgba(15, 23, 42, 0.8);
 }
 
 * {
@@ -21,7 +23,9 @@ html {
 
 body {
     font-family: 'Outfit', sans-serif;
+    background: var(--bg-gradient);
     background-color: var(--bg-color);
+    background-attachment: fixed;
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;

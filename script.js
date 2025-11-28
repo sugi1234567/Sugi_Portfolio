@@ -1,24 +1,63 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Neural Network Animation
+    // Neural Network / Polygonal Mesh Animation
     const canvas = document.getElementById('neuralNetwork');
     const ctx = canvas.getContext('2d');
 
-    // Set canvas size
-    function resizeCanvas() {
+    let particles = [];
+    let particleCount = 0;
+    let connectionDistance = 0;
+    let mouse = { x: null, y: null, radius: 150 };
+
+    // Handle resize and responsiveness
+    function handleResize() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
 
-    // Particle class for neurons
+        // Responsive configuration
+        if (canvas.width < 768) {
+            particleCount = 40; // Fewer particles on mobile
+            connectionDistance = 100;
+            mouse.radius = 80;
+        } else {
+            particleCount = 90; // More particles on desktop
+            connectionDistance = 150;
+            mouse.radius = 150;
+        }
+
+        initParticles();
+    }
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+    });
+
+    // Touch support for mobile interaction
+    window.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+            mouse.x = e.touches[0].clientX;
+            mouse.y = e.touches[0].clientY;
+        }
+    });
+
+    window.addEventListener('touchend', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
+    window.addEventListener('mouseout', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
     class Particle {
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
             this.vx = (Math.random() - 0.5) * 0.5;
             this.vy = (Math.random() - 0.5) * 0.5;
-            this.radius = Math.random() * 2 + 1;
+            this.size = Math.random() * 2 + 1;
         }
 
         update() {
@@ -28,62 +67,67 @@ document.addEventListener('DOMContentLoaded', () => {
             // Bounce off edges
             if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
             if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+            // Mouse interaction
+            if (mouse.x != null) {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < mouse.radius) {
+                    const forceDirectionX = dx / distance;
+                    const forceDirectionY = dy / distance;
+                    const force = (mouse.radius - distance) / mouse.radius;
+                    const directionX = forceDirectionX * force * 3;
+                    const directionY = forceDirectionY * force * 3;
+                    this.x -= directionX;
+                    this.y -= directionY;
+                }
+            }
         }
 
         draw() {
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(99, 102, 241, 0.8)';
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(129, 140, 248, 0.8)';
             ctx.fill();
         }
     }
 
-    // Create particles
-    const particles = [];
-    const particleCount = 80;
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+    function initParticles() {
+        particles = [];
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
     }
 
-    // Draw connections between nearby particles
-    function drawConnections() {
-        const maxDistance = 150;
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
+            particles[i].update();
+            particles[i].draw();
+
+            // Draw connections
+            for (let j = i; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
-                if (distance < maxDistance) {
-                    const opacity = (1 - distance / maxDistance) * 0.5;
+                if (distance < connectionDistance) {
                     ctx.beginPath();
+                    ctx.strokeStyle = `rgba(129, 140, 248, ${1 - distance / connectionDistance})`;
+                    ctx.lineWidth = 1;
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
-                    ctx.lineWidth = 1;
                     ctx.stroke();
+                    ctx.closePath();
                 }
             }
         }
     }
 
-    // Animation loop
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Update and draw particles
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
-        });
-
-        // Draw connections
-        drawConnections();
-
-        requestAnimationFrame(animate);
-    }
-
+    handleResize(); // Initial setup
     animate();
 
     // Intersection Observer for scroll animations
